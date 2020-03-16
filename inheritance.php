@@ -2,18 +2,24 @@
 
 declare(strict_types=1);
 
+/**
+ * Class Human
+ */
 class Human
 {
     private const NUMBER_OF_LEGS = 2;
     private const NUMBER_OF_HANDS = 2;
 
-    public function say(string $words)
+    /**
+     * @param string $words
+     */
+    public function say(string $words): void
     {
         echo 'I want to talk something! ';
         echo $words . '<br>' . '<hr>';
     }
 
-    protected function think()
+    protected function think(): void
     {
         echo 'I think, what I need to say and how! ';
         echo 'I have ' . self::NUMBER_OF_LEGS . ' legs ' . ' and ' . self::NUMBER_OF_HANDS
@@ -22,24 +28,32 @@ class Human
 
 }
 
+/**
+ * Class SmartHuman
+ */
 class SmartHuman extends Human
 {
-    public function say(string $words)
+    /**
+     * @param string $words
+     */
+    public function say(string $words): void
     {
         $this->think();
-        echo 'I want to talk something! ';
-        echo $words . '<br>' . '<hr>';
+        parent::say($words);
     }
 }
 
+/**
+ * Class StupidHuman
+ */
 class StupidHuman extends Human
 {
-    public function say(string $words)
+    public function say(string $words): void
     {
         echo 'I want to talk something! ' . $words . '<br>' . '<hr>';
     }
 
-    protected function think()
+    protected function think(): void
     {
     }
 }
@@ -55,28 +69,35 @@ $smartHuman->say('I am smart human!');
 echo 'Stupid human' . '<br>' . '<hr>';
 $stupidHuman->say('I am stupid human!');
 
-
+/**
+ * Class Dog
+ */
 class Dog
 {
     private const NUMBER_OF_PAWS = 4;
 
-    public function bark()
+    public function bark(): void
     {
         echo '<br>' . '<hr>';
         echo 'Gav, gav! ' . 'I have ' . self::NUMBER_OF_PAWS . ' paws! ' . '<hr>';
     }
 
-    public function sleep()
+    public function sleep(): void
     {
         echo 'I am sleep right now';
         echo '<br>' . '<hr>';
     }
 }
 
+/**
+ * Class GoodDog
+ */
 class GoodDog extends Dog
 {
-
-    public function bark(bool $strangerAtHome = true)
+    /**
+     * @param bool $strangerAtHome
+     */
+    public function bark(bool $strangerAtHome = true): void
     {
         echo '<br>' . '<hr>';
         echo 'Strangers at home - ' . $strangerAtHome . '<br>';
@@ -85,15 +106,21 @@ class GoodDog extends Dog
         }
     }
 
-    public function playWithChildren()
+    public function playWithChildren(): void
     {
         echo '<br>' . 'I like play with a small owners';
     }
 }
 
+/**
+ * Class BadDog
+ */
 class BadDog extends GoodDog
 {
-    public function bark(bool $strangerAtHome = true)
+    /**
+     * @param bool $strangerAtHome
+     */
+    public function bark(bool $strangerAtHome = true): void
     {
         echo '<br>' . '<hr>';
         echo 'Strangers at home - ' . $strangerAtHome . '<br>';
